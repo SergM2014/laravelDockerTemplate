@@ -2,14 +2,19 @@ version: "3.8"
 services:
   laravel_app:
     container_name: laravel_app
+    extra_hosts:
+     - "host.docker.internal:host-gateway"
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
     expose:
       - 9000
     volumes:
+#      - '.:/var/www/html'
       - .:/usr/src/app
       - ./public:/usr/src/app/public
+      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
     depends_on:
       - laravel_db
     networks:

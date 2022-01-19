@@ -16,7 +16,7 @@
 
 2. When all containers are up and running, enter the app container by executing the following command.
     ```
-    $ docker-compose exec blog_app bash
+    $ docker-compose exec laravel_app bash
     ```
 
 3. Install all composer packages included in composer.json
@@ -51,15 +51,15 @@
 
 9. Modify the following fields in your .env file to use the values specified in the database container.
     ```
-    DB_CONNECTION=mysql
-    DB_HOST=blog_db
-    DB_PORT=3306
-    DB_DATABASE=blog
-    DB_USERNAME=root
-    DB_PASSWORD=root
+   DB_CONNECTION=pgsql
+    DB_HOST=pgsql
+    DB_PORT=5432
+    DB_DATABASE=larapi2
+    DB_USERNAME=larapi2
+    DB_PASSWORD=larapi2
     ```
 
-10. To access your Laravel Application visit [http://localhost:8000](http://localhost:8000)
+10. To access your Laravel Application visit [http://localhost:8080](http://localhost:8000)
 
 ## Watching assets for changes
 
@@ -75,7 +75,7 @@ To run the tests you should be inside the application container.
 
 1. Enter the application container
     ```
-    $ docker-compose exec blog_app bash
+    $ docker-compose exec laravel_app bash
     ```
 
 2. Run the tests
@@ -94,3 +94,11 @@ To run the tests you should be inside the application container.
     ```
     $ docker-compose down
     ```
+   
+
+Sehr wichtig!!! Man muss unbedingt linien zu docker-composer.yaml
+
+extra_hosts:
+- "host.docker.internal:host-gateway"
+
+hinzufuegen!
