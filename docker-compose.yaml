@@ -1,0 +1,69 @@
+version: "3.8"
+services:
+  laravel_app:
+    container_name: laravel_app
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    expose:
+      - 9000
+    volumes:
+      - .:/usr/src/app
+      - ./public:/usr/src/app/public
+    depends_on:
+      - laravel_db
+    networks:
+      - laravel_network
+
+  laravel_nginx:
+    container_name: laravel_nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+    - ./public:/usr/src/app/public
+    ports:
+      - 8080:80
+    depends_on:
+      - laravel_app
+    environment:
+      NGINX_FPM_HOST: laravel_app
+      NGINX_ROOT: /usr/src/app/public
+    networks:
+      - laravel_network
+
+  laravel_db:
+    container_name: laravel_db
+    image: 'postgres:13'
+    ports:
+        - '${FORWARD_DB_PORT:-5432}:5432'
+    environment:
+        PGPASSWORD: '${DB_PASSWORD:-secret}'
+        POSTGRES_DB: '${DB_DATABASE}'
+        POSTGRES_USER: '${DB_USERNAME}'
+        POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - 'storepgsql:/var/lib/postgresql/data'
+#        - ./pgsql:/var/lib/postgresql/data
+    networks:
+      - laravel_network
+
+  laravel_redis:
+    container_name: laravel_redis
+    image: redis:latest
+    ports:
+      - 6379:6379
+    volumes:
+       - 'storeredis:/data'
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
+    driver: bridge
+
+volumes:
+  storepgsql:
+    driver: local
+  storeredis:
+    driver: local
