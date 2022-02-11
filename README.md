@@ -102,3 +102,5 @@ extra_hosts:
 - "host.docker.internal:host-gateway"
 
 hinzufuegen!
+
+xdebug is enablrd for laravel 9
