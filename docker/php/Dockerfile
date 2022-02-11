@@ -44,7 +44,8 @@ RUN apt-get update \
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
-
+# This needs in order to run xdebug from PhpStorm
+ENV PHP_IDE_CONFIG 'serverName=DockerApp'
 
 COPY ./docker/php/laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
