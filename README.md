@@ -59,7 +59,7 @@
     DB_PASSWORD=larapi2
     ```
 
-10. To access your Laravel Application visit [http://localhost:8080](http://localhost:8000)
+10. To access your Laravel Application visit [http://localhost:8080](http://localhost:8080)
 
 ## Watching assets for changes
 
