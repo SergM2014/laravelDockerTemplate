@@ -36,17 +36,19 @@ services:
 
   laravel_db:
     container_name: laravel_db
-    image: 'postgres:13'
+    image: 'mysql/mysql-server:8.0'
     ports:
-        - '${FORWARD_DB_PORT:-5432}:5432'
+      - '${FORWARD_DB_PORT:-3306}:3306'
     environment:
-        PGPASSWORD: '${DB_PASSWORD:-secret}'
-        POSTGRES_DB: '${DB_DATABASE}'
-        POSTGRES_USER: '${DB_USERNAME}'
-        POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - 'storepgsql:/var/lib/postgresql/data'
-#        - ./pgsql:/var/lib/postgresql/data
+      - 'mysql:/var/lib/mysql'
+      - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
     networks:
       - laravel_network
 
@@ -65,7 +67,7 @@ networks:
     driver: bridge
 
 volumes:
-  storepgsql:
+  mysql:
     driver: local
   storeredis:
     driver: local
