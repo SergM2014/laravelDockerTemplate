@@ -50,6 +50,6 @@ ENV PHP_IDE_CONFIG 'serverName=DockerApp'
 COPY ./docker/php/laravel.ini /usr/local/etc/php/conf.d/laravel.ini
 
 
-WORKDIR /usr/src/app
+WORKDIR /var/www/html
 
 RUN chown -R www-data:www-data .

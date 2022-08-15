@@ -10,7 +10,7 @@ services:
     expose:
       - 9000
     volumes:
-      - .:/usr/src/app
+      - .:/var/www/html
     depends_on:
       - laravel_db
     networks:
@@ -21,15 +21,13 @@ services:
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
-    volumes:
-    - ./public:/usr/src/app/public
     ports:
-      - 8080:80
+      - "8080:80"
     depends_on:
       - laravel_app
     environment:
       NGINX_FPM_HOST: laravel_app
-      NGINX_ROOT: /usr/src/app/public
+      NGINX_ROOT: /var/www/html/public
     networks:
       - laravel_network
 
