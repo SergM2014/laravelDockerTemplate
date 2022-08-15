@@ -54,9 +54,9 @@
    DB_CONNECTION=pgsql
     DB_HOST=pgsql
     DB_PORT=5432
-    DB_DATABASE=larapi2
-    DB_USERNAME=larapi2
-    DB_PASSWORD=larapi2
+    DB_DATABASE=laravel
+    DB_USERNAME=laravel
+    DB_PASSWORD=laravel
     ```
 
 10. To access your Laravel Application visit [http://localhost:8080](http://localhost:8080)
@@ -103,4 +103,4 @@ extra_hosts:
 
 hinzufuegen!
 
-xdebug is enablrd for laravel 9
+xdebug is enabled for laravel 9
