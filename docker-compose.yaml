@@ -7,6 +7,9 @@ services:
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
+    ports:
+       - '${APP_PORT:-80}:80'
+       - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
     expose:
       - 9000
     volumes:
