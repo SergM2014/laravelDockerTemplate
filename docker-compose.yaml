@@ -26,13 +26,10 @@ services:
       dockerfile: ./docker/nginx/Dockerfile
     ports:
       - "8080:80"
-    depends_on:
-      - laravel_app
-#    environment:
-#      NGINX_FPM_HOST: laravel_app
-#      NGINX_ROOT: /var/www/html/public
     volumes:
       - ./public:/var/www/html/public
+    depends_on:
+      - laravel_app
     networks:
       - laravel_network
 
