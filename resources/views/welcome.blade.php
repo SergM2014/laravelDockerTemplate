@@ -6,12 +6,11 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        <script src="./public/app.js"></script>
-        <link rel="stylesheet" href="/style.css">
-{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 
-        <!-- Styles -->
+
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
 
     </head>
     <body>

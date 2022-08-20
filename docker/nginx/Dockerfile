@@ -1,7 +1,7 @@
 FROM nginx:latest
 
 ENV NGINX_ROOT /var/www/html/public
-ENV NGINX_FPM_HOST localhost
+ENV NGINX_FPM_HOST laravel_app
 ENV NGINX_FPM_PORT 9000
 
 RUN rm -f /etc/nginx/conf.d/default.conf
