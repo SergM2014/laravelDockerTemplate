@@ -13,7 +13,7 @@ ENV COMPOSER_VERSION 2.1.5
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
