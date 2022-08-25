@@ -104,3 +104,19 @@ extra_hosts:
 hinzufuegen!
 
 xdebug is enabled for laravel 9
+
+Demo for graphQl localhost:8080/graphql-playground
+query examples
+{
+    posts {
+        id
+        title
+        author {
+            name
+            }
+        comments {
+            id
+            reply
+        }
+    }
+}
