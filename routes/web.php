@@ -31,10 +31,13 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', function(){
-   return inertia::render('Home', [
-       'name' => 'Jeffrey Way',
-       'frameworks' => [
-           'Laravel', 'Vue', 'Inertia'
-       ]
-   ]);
+   return Inertia::render('Home');
+});
+
+Route::get('/users', function(){
+    return Inertia::render('Users');
+});
+
+Route::get('/settings', function(){
+    return Inertia::render('Settings');
 });
