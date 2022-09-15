@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+{{--        <link href ="https://upkg.com/tailwindcss@*2/dist/tailwind.min,css" rel="stylesheet">--}}
 
         <!-- Scripts -->
         @routes
@@ -15,6 +16,9 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
-        @inertia
+        <section class="p-8">
+            @inertia
+        </section>
+
     </body>
 </html>
