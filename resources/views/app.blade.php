@@ -7,18 +7,15 @@
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+{{--        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">--}}
 {{--        <link href ="https://upkg.com/tailwindcss@*2/dist/tailwind.min,css" rel="stylesheet">--}}
 
         <!-- Scripts -->
         @routes
-        @vite('resources/js/app.js')
+             @vite('resources/js/app.js')
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
-        <section class="p-8">
-            @inertia
-        </section>
-
+        @inertia
     </body>
 </html>
