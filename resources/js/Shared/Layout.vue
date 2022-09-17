@@ -1,9 +1,14 @@
 <template>
     <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
-            <h1 class="font-bold text-lg">
-                My App
-            </h1>
+            <div clas="flex items-center">
+                <h1 class="font-bold text-lg">
+                    My App
+                </h1>
+                <p class="text-sm ml-4">
+                    Welcome Back, {{ username }} !
+                </p>
+            </div>
 
             <Nav />
         </header>
@@ -20,6 +25,12 @@
 
 import Nav from "./Nav.vue";
 export default {
-    components: { Nav }
+    components: { Nav },
+    computed: {
+        username() {
+            return this.$page.props.auth.user.username;
+        }
+    }
+
 }
 </script>
