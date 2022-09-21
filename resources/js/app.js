@@ -16,9 +16,13 @@ createInertiaApp({
     resolve: (name) => {
        let page = resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue'))
 
-        page.then((module) => {
-            module.default.layout ??= Layout;
-        });
+
+            page.then((module) => {
+                // module.default.layout ??= Layout; //old correct variant
+                if(module.default.layout === undefined) {
+                    module.default.layout = Layout;
+                }
+            });
 
         return page;
     },

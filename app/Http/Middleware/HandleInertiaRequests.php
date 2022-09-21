@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
+use Illuminate\Support\Facades\Auth;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -39,11 +40,12 @@ class HandleInertiaRequests extends Middleware
 //                'user' => $request->user(),
 //            ],
 
-            'auth' => [
+            'auth' => Auth::user() ? [
                 'user' => [
-                    'username' => 'John Doe'
+
+                    'username' => Auth::user()->name
                 ]
-            ],
+            ] : null,
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),
